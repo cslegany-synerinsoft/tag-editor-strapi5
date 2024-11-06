@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { useIntl } from "react-intl";
-import { Button, Box, Modal, Typography, Flex } from "@strapi/design-system";
+import { Box, Typography } from "@strapi/design-system";
 import { getTranslation as getTrad } from '../utils/getTranslation';
 import { GetAllTagsRequest, GetAllTagsResult, GetTagsByItemRequest, GetTagsByItemResult, PluginSettingsBody, TagData } from "../../../typings";
 import { useFetchClient } from "@strapi/strapi/admin";
@@ -49,7 +49,8 @@ const EntityTagEditor = forwardRef<EntityTagEditorRef | undefined, EntityTagEdit
 				};
 				const { data } = await post<GetAllTagsResult>(`/tag-editor/all-tags`, request);
 				data.allTags = data.allTags.sort((x, y) => (x.name.localeCompare(y.name)));
-				const tagsByItemData: GetTagsByItemResult = {...data,
+				const tagsByItemData: GetTagsByItemResult = {
+					...data,
 					selectedTags: [],
 				};
 				setTagsByItem(tagsByItemData);
@@ -80,9 +81,11 @@ const EntityTagEditor = forwardRef<EntityTagEditorRef | undefined, EntityTagEdit
 
 	return (
 		<>
-			<Typography variant="omega">
-				{formatMessage({ id: getTrad("plugin.modal.info") })}
-			</Typography>
+			<Box paddingBottom={2}>
+				<Typography variant="omega">
+					{formatMessage({ id: getTrad("plugin.modal.info") })}
+				</Typography>
+			</Box>
 			<TagsSelect ref={tagsSelectRef} allLoadedTags={tagsByItem.allTags} selectedTags={tagsByItem.selectedTags}
 				tagUid={settings.tagUid} maxLength={tagsByItem.maxLength} />
 		</>

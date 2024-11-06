@@ -58,7 +58,7 @@ const Settings = () => {
 			return;
 
 		const setting: PluginSettingsBody = {
-			entityUid: '', tagUid: '',
+			entityUid: '', tagUid: '', buttonLabel: '',
 		};
 		const updatedSettings = settings.map(item => ({ ...item }))
 		updatedSettings.push(setting);

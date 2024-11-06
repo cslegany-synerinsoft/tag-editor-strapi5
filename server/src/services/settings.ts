@@ -16,6 +16,7 @@ const createDefaultConfig = async () => {
         {
             entityUid: 'api::article.article',
             tagUid: 'api::label.label',
+            buttonLabel: 'Edit Labels',
         },
     ];
     const value: PluginSettingsResponse = {

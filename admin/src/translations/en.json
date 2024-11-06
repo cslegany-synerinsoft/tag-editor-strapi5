@@ -23,9 +23,14 @@
 	"plugin.settings.tagUid.hint": "Name of the relation",
 	"plugin.settings.tagUid.placeholder": "api::label.label",
 	"plugin.settings.tagUid.tooltip": "Name of the Tag Entity",
-	"plugin.selectedTags.label": "Create and Assign Tags",
-	"plugin.selectedTags.hint": "Select tags or type to add new tags",
+	"plugin.settings.buttonLabel": "Text of Edit Button",
+	"plugin.settings.buttonLabel.hint": "Text of Edit Button",
+	"plugin.settings.buttonLabel.placeholder": "Edit tags",
+	"plugin.settings.buttonLabel.tooltip": "Button Label will appear in Edit View",
+	"plugin.selectedTags.label": "Assigned Tags",
+	"plugin.selectedTags.hint": "Select tags from the dropdown list",
 	"plugin.selectedTags.placeholder": "Select tags",
-	"plugin.tagsInput.hint": "Type and use comma to add new tags.",
+	"plugin.tagsInput.label": "Create New Tags",
+	"plugin.tagsInput.hint": "Type and use comma to add new tags",
 	"plugin.tagsInput.placeholder": "Type to add new tags"
 }

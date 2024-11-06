@@ -5,6 +5,7 @@ import {
 	MultiSelect,
 	MultiSelectOption,
 	TextInput,
+	Typography,
 } from '@strapi/design-system';
 import { getTranslation as getTrad } from '../utils/getTranslation';
 import { BatchCreateTagResult, CreateTagResult, PluginBatchCreateTagRequest, PluginCreateTagRequest, TagData } from '../../../typings';
@@ -169,25 +170,37 @@ const TagsSelect = forwardRef<TagsSelectRef | undefined, TagsSelectProps>((props
 
 	return (
 		<>
-			<Box paddingTop={4} paddingBottom={4}>
+			<Box paddingTop={2} paddingBottom={2}>
 				<Field.Root
 					error={error}
-					hint={formatMessage({ id: getTrad("plugin.selectedTags.hint") })}
-					name="selectedTags"
-					required
+					hint={formatMessage({ id: getTrad("plugin.tagsInput.hint") })}
+					name="tagsInput"
 				>
-					<Field.Label>
-						{formatMessage({ id: getTrad("plugin.selectedTags.label") })}
-					</Field.Label>
+					<Typography variant="pi">
+						{formatMessage({ id: getTrad("plugin.tagsInput.label") })}
+					</Typography>
 					<TextInput
 						placeholder={formatMessage({ id: getTrad("plugin.tagsInput.placeholder") })}
-						hint={formatMessage({ id: getTrad("plugin.tagsInput.hint") })}
 						onChange={(e: React.ChangeEvent<HTMLInputElement>) => onInputChange(e.target.value)}
 						value={inputValue}
 						size="M"
 						type="text"
 					>
 					</TextInput>
+					<Field.Error />
+					<Field.Hint />
+				</Field.Root>
+			</Box>
+			<Box paddingTop={2} paddingBottom={2}>
+				<Field.Root
+					error={error}
+					hint={formatMessage({ id: getTrad("plugin.selectedTags.hint") })}
+					name="selectedTags"
+					required
+				>
+					<Typography variant="pi">
+						{formatMessage({ id: getTrad("plugin.selectedTags.label") })}
+					</Typography>
 					<MultiSelect
 						onChange={(selectedValues: string[]) => {
 							setSelectedItems(selectedValues);

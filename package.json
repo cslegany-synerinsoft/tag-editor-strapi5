@@ -1,6 +1,6 @@
 {
   "name": "@cslegany/tag-editor-strapi5",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A customizable tag editor to replace the default one.",
   "strapi": {
     "kind": "plugin",
@@ -13,7 +13,6 @@
     "Strapi 5"
   ],
   "license": "MIT",
-  "author": "cslegany <cslegany@synerinsoft.com>",
   "type": "commonjs",
   "exports": {
     "./package.json": "./package.json",

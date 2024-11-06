@@ -1,6 +1,7 @@
 export interface PluginSettingsBody {
     entityUid: string;
     tagUid: string;
+    buttonLabel: string;
 }
 
 export interface PluginSettingsResponse {

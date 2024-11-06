@@ -84,6 +84,12 @@ const SettingsCard = (props: SettingsCardProps) => {
 											required={true} updateItem={updateItem} value={setting.tagUid} />
 									</Box>
 								</Grid.Item>
+								<Grid.Item col={6} s={12}>
+									<Box paddingBottom={6}>
+										<SettingsCardTextField index={index} name='buttonLabel'
+											required={true} updateItem={updateItem} value={setting.buttonLabel} />
+									</Box>
+								</Grid.Item>
 							</Grid.Root>
 						</CardContent>
 					</CardBody>

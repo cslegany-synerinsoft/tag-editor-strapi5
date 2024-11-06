@@ -54,6 +54,13 @@ const TagEditorButton = ({ settings }: TagEditorButtonProps) => {
 		//note: __temp_key__ cannot be retrieved from 'form' for items to be removed, so we have to manually hide the labels / tags relations on article page
 	}
 
+	let buttonLabel = settingForEntity.buttonLabel;
+	if (!buttonLabel)
+		buttonLabel = formatMessage({
+			id: "plugin.buttons.edit-tags",
+			defaultMessage: "Edit Tags",
+		});
+
 	return (
 		<>
 			{(
@@ -61,10 +68,7 @@ const TagEditorButton = ({ settings }: TagEditorButtonProps) => {
 					<Modal.Trigger>
 						<Box style={{ width: '100%' }}>
 							<Button style={{ width: '100%' }} variant="secondary" startIcon={<PriceTag />}>
-								{formatMessage({
-									id: "plugin.buttons.edit-tags",
-									defaultMessage: "Edit Tags",
-								})}
+								{buttonLabel}
 							</Button>
 						</Box>
 					</Modal.Trigger>
@@ -75,9 +79,7 @@ const TagEditorButton = ({ settings }: TagEditorButtonProps) => {
 							</Modal.Title>
 						</Modal.Header>
 						<form onSubmit={(event) => {
-							//wait().then(() => {
 							setIsModalOpen(false);
-							//});
 							event.preventDefault();
 						}}
 						>
