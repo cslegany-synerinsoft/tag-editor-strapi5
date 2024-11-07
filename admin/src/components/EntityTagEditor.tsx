@@ -5,6 +5,7 @@ import { getTranslation as getTrad } from '../utils/getTranslation';
 import { GetAllTagsRequest, GetAllTagsResult, GetTagsByItemRequest, GetTagsByItemResult, PluginSettingsBody, TagData } from "../../../typings";
 import { useFetchClient } from "@strapi/strapi/admin";
 import TagsSelect, { TagsSelectRef } from "./TagsSelect";
+import { replaceTagName } from "../utils/replaceTagName";
 
 export interface EntityTagEditorRef {
 	getSelectedItems: () => string[];
@@ -83,11 +84,11 @@ const EntityTagEditor = forwardRef<EntityTagEditorRef | undefined, EntityTagEdit
 		<>
 			<Box paddingBottom={2}>
 				<Typography variant="omega">
-					{formatMessage({ id: getTrad("plugin.modal.info") })}
+					{replaceTagName(formatMessage({ id: getTrad("plugin.modal.info") }), settings.tagsName)}
 				</Typography>
 			</Box>
 			<TagsSelect ref={tagsSelectRef} allLoadedTags={tagsByItem.allTags} selectedTags={tagsByItem.selectedTags}
-				tagUid={settings.tagUid} maxLength={tagsByItem.maxLength} />
+				tagUid={settings.tagUid} maxLength={tagsByItem.maxLength} tagsName={settings.tagsName} />
 		</>
 	)
 })

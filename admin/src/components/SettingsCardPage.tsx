@@ -26,7 +26,7 @@ const SettingsCardPage = (props: SettingsCardPageProps) => {
 	const { formatMessage } = useIntl();
 
 	const checkFormErrors = () => {
-		return settings.findIndex(x => !x.entityUid || !x.tagUid || !x.buttonLabel) !== -1;
+		return settings.findIndex(x => !x.entityUid || !x.tagUid || !x.buttonLabel || !x.tagsName) !== -1;
 	}
 
 	const hasFormError = checkFormErrors();

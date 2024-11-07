@@ -12,6 +12,7 @@ import { BatchCreateTagResult, CreateTagResult, PluginBatchCreateTagRequest, Plu
 import { useIntl } from 'react-intl';
 import { useDebounce } from "use-debounce";
 import { useFetchClient } from '@strapi/strapi/admin';
+import { replaceTagName } from '../utils/replaceTagName';
 
 export interface TagsSelectRef {
 	getSelectedItems: () => string[];
@@ -23,10 +24,11 @@ interface TagsSelectProps {
 	allLoadedTags: TagData[];
 	tagUid: string;
 	maxLength?: number;
+	tagsName: string;
 }
 
 const TagsSelect = forwardRef<TagsSelectRef | undefined, TagsSelectProps>((props: TagsSelectProps, ref) => {
-	const { allLoadedTags, selectedTags, tagUid, maxLength } = props;
+	const { allLoadedTags, selectedTags, tagUid, maxLength, tagsName } = props;
 
 	const { formatMessage } = useIntl();
 	const { post } = useFetchClient();
@@ -173,14 +175,14 @@ const TagsSelect = forwardRef<TagsSelectRef | undefined, TagsSelectProps>((props
 			<Box paddingTop={2} paddingBottom={2}>
 				<Field.Root
 					error={error}
-					hint={formatMessage({ id: getTrad("plugin.tagsInput.hint") })}
+					hint={replaceTagName(formatMessage({ id: getTrad("plugin.tagsInput.hint") }), tagsName)}
 					name="tagsInput"
 				>
 					<Typography variant="pi">
-						{formatMessage({ id: getTrad("plugin.tagsInput.label") })}
+						{replaceTagName(formatMessage({ id: getTrad("plugin.tagsInput.label") }), tagsName)}
 					</Typography>
 					<TextInput
-						placeholder={formatMessage({ id: getTrad("plugin.tagsInput.placeholder") })}
+						placeholder={replaceTagName(formatMessage({ id: getTrad("plugin.tagsInput.placeholder") }), tagsName)}
 						onChange={(e: React.ChangeEvent<HTMLInputElement>) => onInputChange(e.target.value)}
 						value={inputValue}
 						size="M"
@@ -194,18 +196,18 @@ const TagsSelect = forwardRef<TagsSelectRef | undefined, TagsSelectProps>((props
 			<Box paddingTop={2} paddingBottom={2}>
 				<Field.Root
 					error={error}
-					hint={formatMessage({ id: getTrad("plugin.selectedTags.hint") })}
+					hint={replaceTagName(formatMessage({ id: getTrad("plugin.selectedTags.hint") }), tagsName)}
 					name="selectedTags"
 					required
 				>
 					<Typography variant="pi">
-						{formatMessage({ id: getTrad("plugin.selectedTags.label") })}
+						{replaceTagName(formatMessage({ id: getTrad("plugin.selectedTags.label") }), tagsName)}
 					</Typography>
 					<MultiSelect
 						onChange={(selectedValues: string[]) => {
 							setSelectedItems(selectedValues);
 						}}
-						placeholder={formatMessage({ id: getTrad("plugin.selectedTags.placeholder") })}
+						placeholder={replaceTagName(formatMessage({ id: getTrad("plugin.selectedTags.placeholder") }), tagsName)}
 						value={selectedItems}
 						withTags
 					>

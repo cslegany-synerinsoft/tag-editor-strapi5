@@ -8,6 +8,7 @@ import { PriceTag } from "@strapi/icons";
 import { getTranslation as getTrad } from '../utils/getTranslation';
 import { ConnectDisconnectRequest, ConnectDisconnectResponse, PluginSettingsResponse } from "../../../typings";
 import EntityTagEditor, { EntityTagEditorRef } from "./EntityTagEditor";
+import { replaceTagName } from "../utils/replaceTagName";
 
 interface TagEditorButtonProps {
 	settings: PluginSettingsResponse;
@@ -25,9 +26,7 @@ const TagEditorButton = ({ settings }: TagEditorButtonProps) => {
 	const { onChange } = form;
 
 	const pathnameLower = pathname.toLowerCase();
-	// if (isCreatingEntry || pathnameLower.endsWith("/create")) //isCreatingEntry can be false even though we're creating an entry
-	// 	return null;
-
+	
 	let settingForEntity = settings.items.find(x => pathnameLower.includes(x.entityUid));
 	if (!settingForEntity)
 		return null;
@@ -55,11 +54,12 @@ const TagEditorButton = ({ settings }: TagEditorButtonProps) => {
 	}
 
 	let buttonLabel = settingForEntity.buttonLabel;
-	if (!buttonLabel)
+	if (!buttonLabel) {
 		buttonLabel = formatMessage({
 			id: "plugin.buttons.edit-tags",
 			defaultMessage: "Edit Tags",
 		});
+	}
 
 	return (
 		<>
@@ -75,7 +75,7 @@ const TagEditorButton = ({ settings }: TagEditorButtonProps) => {
 					<Modal.Content style={{ width: '680px' }}>
 						<Modal.Header>
 							<Modal.Title>
-								{formatMessage({ id: getTrad("plugin.modal.title") })}
+								{replaceTagName(formatMessage({ id: getTrad("plugin.modal.title") }), settingForEntity.tagsName)}
 							</Modal.Title>
 						</Modal.Header>
 						<form onSubmit={(event) => {

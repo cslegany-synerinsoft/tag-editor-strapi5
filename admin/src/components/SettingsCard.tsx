@@ -90,6 +90,12 @@ const SettingsCard = (props: SettingsCardProps) => {
 											required={true} updateItem={updateItem} value={setting.buttonLabel} />
 									</Box>
 								</Grid.Item>
+								<Grid.Item col={6} s={12}>
+									<Box paddingBottom={6}>
+										<SettingsCardTextField index={index} name='tagsName'
+											required={true} updateItem={updateItem} value={setting.tagsName} />
+									</Box>
+								</Grid.Item>
 							</Grid.Root>
 						</CardContent>
 					</CardBody>
