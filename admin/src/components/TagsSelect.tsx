@@ -168,6 +168,8 @@ const TagsSelect = forwardRef<TagsSelectRef | undefined, TagsSelectProps>((props
 			else
 				createTags(tagsToAdd);
 		}
+
+		setInputValue("");
 	}, [debouncedInputValue]);
 
 	return (
