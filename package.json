@@ -1,6 +1,6 @@
 {
   "name": "@cslegany/tag-editor-strapi5",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "A customizable tag editor to replace the default one.",
   "strapi": {
     "kind": "plugin",
