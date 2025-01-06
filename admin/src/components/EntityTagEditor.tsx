@@ -77,6 +77,20 @@ const EntityTagEditor = forwardRef<EntityTagEditorRef | undefined, EntityTagEdit
 		};
 	}, [])
 
+	const handleKeyDown = (e:KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			e.preventDefault();
+		}
+	}
+	
+	useEffect(() => {
+		document.addEventListener('keydown', handleKeyDown);
+	
+		return () => {
+			document.removeEventListener('keydown', handleKeyDown);
+		};
+	}, []);
+
 	if (!tagsByItem || isLoading)
 		return;
 
